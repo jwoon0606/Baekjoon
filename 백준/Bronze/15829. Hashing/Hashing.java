@@ -1,34 +1,33 @@
-import com.sun.security.jgss.GSSUtil;
-
-import javax.lang.model.type.IntersectionType;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.IOException;
+import java.math.BigInteger;
 import java.util.StringTokenizer;
 
 public class Main{
     public static void main(String[] args) throws IOException{
-        final int r = 31;
-        final long M = 1234567891;
+        BigInteger r = new BigInteger("31");
+        BigInteger M = new BigInteger("1234567891");
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int l = Integer.parseInt(br.readLine());
         String str = br.readLine();
 
-        long hashValue = 0;
+        BigInteger hashValue = new BigInteger("0");
         for (int i = 0; i < l; i++) {
             char c = str.charAt(i);
-            long value = c -'a' + 1;
+            int temp = c - 'a' + 1;
+            BigInteger value = new BigInteger(String.valueOf(temp));
             for (int j = 0; j < i; j++) {
-                value *= r;
+                value = value.multiply(new BigInteger("31"));
             }
-            hashValue += value;
+            hashValue = hashValue.add(value);
         }
 
-        hashValue %= M;
+        hashValue = hashValue.remainder(M);
 
         StringBuilder sb = new StringBuilder();
-        sb.append(hashValue).append("\n");
+        sb.append(hashValue.toString()).append("\n");
         System.out.print(sb);
     }
 }
