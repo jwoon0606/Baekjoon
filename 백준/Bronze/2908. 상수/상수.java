@@ -8,30 +8,11 @@ public class Main{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
 
-        String str1 = st.nextToken();
-        String str2 = st.nextToken();
+        int A = Integer.parseInt(new StringBuilder(st.nextToken()).reverse().toString());
+        int B = Integer.parseInt(new StringBuilder(st.nextToken()).reverse().toString());
 
         StringBuilder sb = new StringBuilder();
-        int w = 1;
-        for (int i = 2; i >= 0; i--) {
-            if(str1.charAt(i) > str2.charAt(i)){
-                break;
-            } else if(str1.charAt(i) < str2.charAt(i)) {
-                w = 2;
-                break;
-            }
-        }
-        if(w == 1){
-            for (int i = 2; i >= 0; i--) {
-                sb.append(str1.charAt(i));
-            }
-        }else{
-            for (int i = 2; i >= 0; i--) {
-                sb.append(str2.charAt(i));
-            }
-        }
-
-        sb.append("\n");
+        sb.append(A > B ? A : B).append("\n");
         System.out.print(sb);
     }
 }
