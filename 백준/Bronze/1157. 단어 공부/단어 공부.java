@@ -9,30 +9,24 @@ public class Main{
         int[] count = new int[26];
 
         for(byte val : br.readLine().getBytes()){
-            int s;
-            if((char)val >= 'A' && (char)val <= 'Z')
-                s = (char)val - 'A';
+            if((char)val <= 'Z')
+                count[(char)val - 'A']++;
             else
-                s = (char)val - 'a';
-            count[s]++;
+                count[(char)val - 'a']++;
         }
 
-        int max = count[0];
-        int max_i = 0;
-        for (int i = 1; i < count.length; i++) {
+        int max = -1;
+        int ch = '?';
+        for (int i = 0; i < count.length; i++) {
             if(count[i] > max){
                 max = count[i];
-                max_i = i;
+                ch = i + 'A';
+            }
+            else if(count[i] == max){
+                ch = '?';
             }
         }
 
-        for(int i=0; i<count.length; i++){
-            if(max == count[i] && i != max_i){
-                System.out.println("?");
-                return;
-            }
-        }
-
-        System.out.println((char)(max_i + 'A'));
+        System.out.println((char)ch);
     }
 }
