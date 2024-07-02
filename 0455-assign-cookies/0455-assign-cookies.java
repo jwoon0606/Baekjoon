@@ -5,8 +5,10 @@ class Solution {
         Arrays.sort(g);
         Arrays.sort(s);
         while(i < g.length && j < s.length){
-            if(s[j++] >= g[i++])
+            if(s[j] >= g[i]){
                 count++;
+                j++; i++;
+            }
             else
                 j++;
         }
