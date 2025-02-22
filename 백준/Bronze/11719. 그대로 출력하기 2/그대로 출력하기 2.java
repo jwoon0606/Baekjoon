@@ -6,9 +6,7 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringBuilder sb = new StringBuilder();
         String str;
-        while(true) {
-            str = br.readLine();
-            if(str == null) break;
+        while((str = br.readLine()) != null) {
             sb.append(str).append("\n");
         }
 
